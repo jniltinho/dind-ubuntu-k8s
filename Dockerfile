@@ -1,16 +1,14 @@
 FROM ubuntu:18.04
-LABEL maintainer="Dirceu Silva <docker@dirceusilva.com>"
+LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -yq \
     apt-transport-https tzdata \
-    ca-certificates \
-    curl \
-    lxc \
-    git-core \
-    vim \
-    iptables
+    ca-certificates software-properties-common \
+    curl docker.io socat \
+    lxc git-core \
+    vim iptables
 
 
 ###########
@@ -23,12 +21,6 @@ RUN apt-get update \
   && pip3 install --upgrade pip
 
 
-
-##########
-# DOCKER #
-##########
-RUN curl -sSL https://get.docker.com/ | sh
-
 # Wrapper docker ninja...
 COPY ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
@@ -37,15 +29,12 @@ VOLUME /var/lib/docker
 CMD ["wrapdocker"]
 
 
-
-
 ##################
 # DOCKER-COMPOSE #
 ##################
 RUN pip3 install docker-compose
 RUN pip3 install pymsteams
 RUN docker-compose version
-
 
 
 ###########
