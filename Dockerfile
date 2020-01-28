@@ -43,6 +43,7 @@ CMD ["wrapdocker"]
 # DOCKER-COMPOSE #
 ##################
 RUN pip3 install docker-compose
+RUN pip3 install pymsteams
 RUN docker-compose version
 
 
