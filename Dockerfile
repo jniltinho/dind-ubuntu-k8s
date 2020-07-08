@@ -4,9 +4,9 @@ LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -yq \
-    apt-transport-https tzdata ansible sshpass \
+    apt-transport-https tzdata ansible ansible-lint \
     ca-certificates software-properties-common \
-    curl docker.io socat \
+    curl docker.io socat sshpass yamllint \
     lxc git-core \
     vim iptables
 
@@ -41,7 +41,8 @@ RUN docker-compose version
 ###########
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && chmod +x ./kubectl \
-    && mv ./kubectl /usr/local/bin/kubectl
+    && mv ./kubectl /usr/local/bin/kubectl \
+    && echo -e '[all:vars]\nansible_python_interpreter=/usr/bin/python3' >> /etc/ansible/hosts
 
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
