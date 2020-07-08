@@ -4,7 +4,7 @@ LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -yq \
-    apt-transport-https tzdata \
+    apt-transport-https tzdata ansible \
     ca-certificates software-properties-common \
     curl docker.io socat \
     lxc git-core \
