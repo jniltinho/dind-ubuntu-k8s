@@ -3,6 +3,12 @@ LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+## Env Ansible
+ENV ANSIBLE_HOST_KEY_CHECKING=False
+ENV ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
+ENV ANSIBLE_REMOTE_PORT=22
+ENV ANSIBLE_REMOTE_USER=root
+
 RUN apt-get update && apt-get install -yq \
     apt-transport-https tzdata ansible ansible-lint \
     ca-certificates software-properties-common \
@@ -41,8 +47,7 @@ RUN docker-compose version
 ###########
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && chmod +x ./kubectl \
-    && mv ./kubectl /usr/local/bin/kubectl \
-    && echo -e '[all:vars]\nansible_python_interpreter=/usr/bin/python3' >> /etc/ansible/hosts
+    && mv ./kubectl /usr/local/bin/kubectl
 
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
