@@ -4,10 +4,10 @@ LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Env Ansible
-ENV ANSIBLE_HOST_KEY_CHECKING=False
-ENV ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
-ENV ANSIBLE_REMOTE_PORT=22
-ENV ANSIBLE_REMOTE_USER=root
+ENV ANSIBLE_HOST_KEY_CHECKING False
+ENV ANSIBLE_PYTHON_INTERPRETER /usr/bin/python3
+ENV ANSIBLE_REMOTE_PORT 22
+ENV ANSIBLE_REMOTE_USER root
 
 RUN apt-get update && apt-get install -yq \
     apt-transport-https tzdata ansible ansible-lint \
