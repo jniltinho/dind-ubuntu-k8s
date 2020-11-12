@@ -41,6 +41,11 @@ RUN pip3 install docker-compose fabric3 pymsteams
 RUN docker-compose version
 
 
+RUN curl -#kL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 \
+    && curl -#kL -o /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 \
+    && chmod +x /usr/local/bin/yq /usr/local/bin/jq
+
+
 ###########
 # KUBECTL #
 ###########
