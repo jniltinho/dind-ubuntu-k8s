@@ -43,6 +43,9 @@ RUN docker-compose version
 
 RUN curl -#kL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 \
     && curl -#kL -o /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 \
+    && curl -LO https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz \
+    && mkdir minify_ && tar -xf minify_linux_amd64.tar.gz -C minify_ \
+    && mv minify_/minify /usr/local/bin/ && rm -rf *.tar.gz minify_ \
     && chmod +x /usr/local/bin/yq /usr/local/bin/jq
 
 
