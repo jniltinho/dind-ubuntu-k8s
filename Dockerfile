@@ -10,7 +10,7 @@ ENV ANSIBLE_HOST_KEY_CHECKING False
 ENV ANSIBLE_REMOTE_PORT 22
 ENV ANSIBLE_REMOTE_USER root
 
-RUN apt-get update && apt-get install -yq \
+RUN apt-get update && apt-get install -yq fabric \
     apt-transport-https tzdata ansible ansible-lint \
     ca-certificates software-properties-common \
     curl docker.io socat sshpass yamllint \
