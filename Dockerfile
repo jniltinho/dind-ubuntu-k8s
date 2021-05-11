@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -yq \
     apt-transport-https tzdata ansible ansible-lint \
     ca-certificates software-properties-common \
     curl docker.io socat sshpass yamllint \
-    git iptables python3-pip
+    git iptables python3-pip docker-compose
 
 
 ###########
@@ -28,12 +28,6 @@ RUN chmod +x /usr/local/bin/wrapdocker
 
 VOLUME /var/lib/docker
 CMD ["wrapdocker"]
-
-
-##################
-# DOCKER-COMPOSE #
-##################
-RUN pip3 install docker-compose fabric pymsteams
 
 
 RUN curl -#kL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.8.0/yq_linux_amd64 \
