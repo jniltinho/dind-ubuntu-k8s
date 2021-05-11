@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -yq \
     apt-transport-https tzdata ansible ansible-lint \
     ca-certificates software-properties-common \
     curl docker.io socat sshpass yamllint \
-    lxc git-core vim iptables python3-pip python3-dev
+    lxc git iptables python3-pip python3-dev
 
 
 ###########
