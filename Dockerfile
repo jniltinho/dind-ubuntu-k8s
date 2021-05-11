@@ -1,5 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 LABEL maintainer="Nilton Oliveira <jniltinho@gmail.com>"
+
+ARG KUBECTL_VERSION=1.18.5
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -42,7 +44,7 @@ RUN curl -#kL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/down
 ###########
 # KUBECTL #
 ###########
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+RUN curl -LO https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl
 
